@@ -17,6 +17,10 @@ machine:
 
 jobs:
   build:
+    branches:
+      ignore:
+        - gh-pages
+
     docker:
       - image: circleci/python:stretch
 
@@ -50,15 +54,51 @@ jobs:
             flake8 --count tekel setup.py
             pytest --cov=tekel tests
             codecov --token=9859003a-55ac-410d-8207-49daf8349673
+
+  doc:
+    branches: master
+
+    docker:
+      - image: circleci/python:stretch
+
+    working_directory: ~/tekel
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "requirements.txt" }}
+
+      - run:
+          name: install python dependencies
+          command: |
+            python3 -m venv venv
+            source venv/bin/activate
+            pip install --upgrade pip
+            pip install -r requirements.txt
+
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependencies-{{ checksum "requirements.txt" }}
+
+      - run:
+          name: build documentation
+          command: |
+            source venv/bin/activate
+            python setup.py install
+            flake8 --count tekel setup.py
+            pytest --cov=tekel tests
             set -o pipefail && cd doc && make html 2>&1 | tee ~/log.txt
 
-deployment:
-  push:
-    branch: master
-    commands:
-      bash .circleci/push_doc.sh
+      - deployment:
+            bash .circleci/push_doc.sh
 
-general:
-  branches:
-    ignore:
-      - gh-pages
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - doc
+
