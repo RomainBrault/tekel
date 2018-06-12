@@ -3,7 +3,7 @@
 [run]
 branch = True
 source = tekel
-include = */celer/*
+include = */tekel/*
 omit = */setup.py
 
 [report]
