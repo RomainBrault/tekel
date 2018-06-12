@@ -33,4 +33,4 @@ jobs:
             python setup.py install
             flake8 --count tekel setup.py
             pytest --cov=tekel tests
-            codecov --token=4ad2b11b-4c56-44af-a5a8-c9475b7e74a5
+            codecov --token=9859003a-55ac-410d-8207-49daf8349673
