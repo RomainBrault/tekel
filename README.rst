@@ -1,3 +1,16 @@
+.. -*- mode: rst -*-
+
+.. |Codecov| image:: https://codecov.io/gh/RomainBrault/tekel/branch/master/graph/badge.svg?token=oPkpkXf24i
+.. _Codecov: https://codecov.io/gh/romainbrault/tekel
+
+.. |CircleCI| image:: https://circleci.com/bb/RomainBrault/itl.svg?style=shield&circle-token=:circle-token
+.. _CircleCI: https://circleci.com/bb/RomainBrault/itl
+
+
+.. |Python36| image:: https://img.shields.io/badge/Python-3.x-blue.svg
+.. _Python36: https://www.python.org/downloads/release/python-364/
+
+
 tekel
 =====
 
