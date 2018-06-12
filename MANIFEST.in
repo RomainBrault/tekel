@@ -1,0 +1,24 @@
+include *.rst
+include *.md
+include *.in
+include README.rst
+include LICENSE
+include requirements.txt
+include tekel/__init__.py
+
+recursive-include examples *.py
+recursive-include examples *.txt
+
+recursive-include tekel *.py
+recursive-include tekel *.pyx
+recursive-include tekel *.pxd
+
+### Exclude
+
+exclude Makefile
+exclude .coveragerc
+exclude *.yml
+exclude .mailmap
+recursive-exclude tekel *.pyc
+
+recursive-exclude doc *
