@@ -19,6 +19,10 @@ exclude Makefile
 exclude .coveragerc
 exclude *.yml
 exclude .mailmap
+exclude .circleci
 recursive-exclude tekel *.pyc
+recursive-exclude .circleci *.yml
 
+exclude tests
 recursive-exclude doc *
+recursive-exclude tests *
