@@ -1,3 +1,3 @@
 """ Test module for tekel."""
 
-import test_tekel
+import tests.test_tekel
