@@ -1,2 +1,0 @@
-# tekel
-TensorFlow Kernel Library
