@@ -12,7 +12,6 @@ jobs:
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "requirements.txt" }}
-          - v1-dependencies-
 
       - run:
           name: install python dependencies
@@ -21,7 +20,6 @@ jobs:
             source venv/bin/activate
             pip install --upgrade pip
             pip install -r requirements.txt
-            pip install codecov pytest pytest-cov flake8
 
       - save_cache:
           paths:
@@ -33,6 +31,6 @@ jobs:
           command: |
             source venv/bin/activate
             python setup.py install
-            flake8 --count
+            flake8 --count .
             pytest --cov=tekel tests
             codecov --token=4ad2b11b-4c56-44af-a5a8-c9475b7e74a5
