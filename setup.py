@@ -13,7 +13,6 @@ def main():
         INSTALL_REQUIRES = [l.strip()
                             for l in f.readlines()
                             if l and not search('# optional', l)]
-        print(INSTALL_REQUIRES)
 
     setup(name='tekel',
           version=__version__,

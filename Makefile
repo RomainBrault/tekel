@@ -6,7 +6,7 @@ PYTESTS ?= pytest
 
 CTAGS ?= ctags
 
-all: clean inplace test
+all: clean inplace test doc-plot
 
 clean-pyc:
 	find . -name "*.pyc" | xargs rm -f
@@ -33,7 +33,7 @@ test-code:
 	$(PYTESTS) tests
 
 test-doc:
-	$(PYTESTS) $(shell find doc -name '*.rst' | sort)
+	make -C doc doctest
 
 test-coverage:
 	rm -rf coverage .coverage
@@ -52,13 +52,8 @@ ctags:
 	# Install with: sudo apt-get install exuberant-ctags
 	$(CTAGS) -R *
 
-.PHONY : doc-plot
-doc-plot	:
+doc-plot:
 	make -C doc html
-
-.PHONY : doc
-doc:
-	make -C doc html-noplot
 
 test-manifest:
 	check-manifest --ignore doc,tests;
