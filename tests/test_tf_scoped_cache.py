@@ -1,7 +1,7 @@
 import tensorflow as tf
 import numpy as np
 
-from tekel.tf_scoped_cache import *
+from tekel.tf_scoped_cache import scope, clear_all_cached_functions
 
 
 tf.enable_eager_execution()

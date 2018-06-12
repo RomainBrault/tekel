@@ -1,6 +1,6 @@
 """TensorFlow Kernel Library: tekel."""
 
-from .tf_scoped_cache import *
+from .tf_scoped_cache import scope, clear_all_cached_functions
 
 
 __version__ = '0.0.1-rc0'
