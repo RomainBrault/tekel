@@ -95,10 +95,3 @@ jobs:
       - deployment:
             bash .circleci/push_doc.sh
 
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build
-      - doc
-
