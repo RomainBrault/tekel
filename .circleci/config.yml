@@ -61,12 +61,12 @@ jobs:
           at: ./venv
 
       - run:
-         name: run test
-         command: |
-           source venv/bin/activate
-           flake8 --count tekel setup.py
-           pytest --cov=tekel tests
-           codecov --token=9859003a-55ac-410d-8207-49daf8349673
+          name: run test
+          command: |
+            source venv/bin/activate
+            flake8 --count tekel setup.py
+            pytest --cov=tekel tests
+            codecov --token=9859003a-55ac-410d-8207-49daf8349673
 
   deploy:
     <<: *defaults
