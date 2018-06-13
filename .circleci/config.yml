@@ -52,18 +52,19 @@ jobs:
 
       - persist_to_workspace:
           root: ~/tekel/
-          paths: ./venv
+          paths: ./venv/lib/python3.6/site-packages/tekel/
 
   test:
     <<: *defaults
 
     steps:
       - attach_workspace:
-          at: ./venv
+          at: ./venv/lib/python3.6/site-packages/tekel
 
       - run:
           name: run test
           command: |
+            python3 -m venv venv
             source venv/bin/activate
             flake8 --count tekel setup.py
             pytest --cov=tekel tests
@@ -74,7 +75,7 @@ jobs:
 
     steps:
       - attach_workspace:
-          at: ./venv
+          at: ./venv/lib/python3.6/site-packages/tekel
 
       #- run:
         #name: push_doc
