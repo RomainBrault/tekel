@@ -9,3 +9,4 @@ sphinx_bootstrap_theme # optional
 flake8 # optional
 pytest # optional
 pytest-cov # optional
+codecov # optional
