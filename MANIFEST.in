@@ -25,7 +25,7 @@ recursive-exclude tekel *.pyc
 recursive-exclude .circleci *.yml
 
 exclude tests
-exclude ci_scripts
+exclude .ci_scripts
 recursive-exclude doc *
 recursive-exclude tests *
-recursive-exclude ci_scripts *.sh
+recursive-exclude .ci_scripts *.sh
