@@ -55,7 +55,26 @@ jobs:
             pytest --cov=tekel tests
             codecov --token=9859003a-55ac-410d-8207-49daf8349673
 
-      - deployment:
+  deploy:
+    branches:
+      only:
+        - master
+    docker:
+      - image: circleci/python:stretch
+
+    working_directory: ~/tekel
+
+    steps:
+      - run:
+        name: push_doc
+        command: |
             set -o pipefail && cd doc && make html 2>&1 | tee ~/log.txt
             bash .circleci/push_doc.sh
 
+workflows:
+  version: 2
+    build_and_test:
+        - build
+        - deploy:
+          requires:
+            - build
