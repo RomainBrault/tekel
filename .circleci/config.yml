@@ -64,7 +64,7 @@ jobs:
       - run:
           name: run test
           command: |
-            source ../venv/bin/activate
+            source venv/bin/activate
             flake8 --count tekel setup.py
             pytest --cov=tekel tests
             codecov --token=9859003a-55ac-410d-8207-49daf8349673
@@ -79,7 +79,7 @@ jobs:
       - run:
           name: push documentation
           command: |
-            source ../venv/bin/activate
+            source venv/bin/activate
             set -o pipefail && cd doc && make html 2>&1 | tee ~/log.txt
             ls .circleci/
             bash .circleci/push_doc.sh
