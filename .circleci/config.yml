@@ -1,19 +1,19 @@
 version: 2
 
-machine:
-  environment:
-    # The github organization or username of the repository which hosts the
-    # project and documentation.
-    USERNAME: "RomainBrault"
+#machine:
+  #environment:
+    ## The github organization or username of the repository which hosts the
+    ## project and documentation.
+    #USERNAME: "RomainBrault"
 
-    # The repository where the documentation will be hosted
-    DOC_REPO: "tekel"
+    ## The repository where the documentation will be hosted
+    #DOC_REPO: "tekel"
 
-    # The base URL for the Github page where the documentation will be hosted
-    DOC_URL: ""
+    ## The base URL for the Github page where the documentation will be hosted
+    #DOC_URL: ""
 
-    # The email is to be used for commits in the Github Page
-    EMAIL: "mail@romainbrault.com"
+    ## The email is to be used for commits in the Github Page
+    #EMAIL: "mail@romainbrault.com"
 
 jobs:
   build:
