@@ -80,9 +80,11 @@ jobs:
           name: push documentation
           command: |
             source venv/bin/activate
-            set -o pipefail && cd doc && make html 2>&1 | tee ~/log.txt
-            ls -alt
-            bash .ci_scripts/push_doc.sh
+            set -o pipefail
+            cd doc
+            make html 2>&1 | tee ~/log.txt
+            cd ..
+            bash ci_scripts/push_doc.sh
 
 workflows:
   version: 2
