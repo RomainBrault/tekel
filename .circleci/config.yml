@@ -51,7 +51,7 @@ jobs:
             python setup.py install
 
       - persist_to_workspace:
-          root: ~
+          root: ..
           paths:
             - ./tekel
             - ./venv/lib/python3.6/site-packages/tekel*
