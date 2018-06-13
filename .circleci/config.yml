@@ -17,8 +17,8 @@ version: 2
 
 defaults: &defaults
   working_directory: ~/tekel/
-    docker:
-        - image: circleci/python:stretch
+  docker:
+    - image: circleci/python:stretch
 
 jobs:
   build:
