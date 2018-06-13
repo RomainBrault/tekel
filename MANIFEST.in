@@ -17,6 +17,7 @@ recursive-include tekel *.pxd
 
 exclude Makefile
 exclude .coveragerc
+exclude .nojekyll
 exclude *.yml
 exclude .mailmap
 exclude .circleci
@@ -24,5 +25,7 @@ recursive-exclude tekel *.pyc
 recursive-exclude .circleci *.yml
 
 exclude tests
+exclude ci_scripts
 recursive-exclude doc *
 recursive-exclude tests *
+recursive-exclude ci_scripts *.sh
