@@ -15,12 +15,14 @@ version: 2
     ## The email is to be used for commits in the Github Page
     #EMAIL: "mail@romainbrault.com"
 
+defaults: &defaults
+  working_directory: ~/tekel/
+    docker:
+        - image: circleci/python:stretch
+
 jobs:
   build:
-    docker:
-      - image: circleci/python:stretch
-
-    working_directory: ~/tekel
+    <<: *defaults
 
     steps:
       - checkout
@@ -48,13 +50,16 @@ jobs:
             source venv/bin/activate
             python setup.py install
 
-  test:
-    docker:
-      - image: circleci/python:stretch
+      - persist_to_workspace:
+          paths: ./venv
 
-    working_directory: ~/tekel
+  test:
+    <<: *defaults
 
     steps:
+      - attach_workspace:
+          paths: ./venv
+
       - run:
          name: run test
          command: |
@@ -64,13 +69,11 @@ jobs:
            codecov --token=9859003a-55ac-410d-8207-49daf8349673
 
   deploy:
-    docker:
-      - image: circleci/python:stretch
-
-    working_directory: ~/tekel
+    <<: *defaults
 
     steps:
-      - checkout
+      - attach_workspace:
+          paths: ./venv
 
       #- run:
         #name: push_doc
