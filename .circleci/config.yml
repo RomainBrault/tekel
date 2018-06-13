@@ -41,7 +41,7 @@ jobs:
 
       - save_cache:
           paths:
-            - ./venv
+            - ../venv
           key: dependencies-{{ checksum "requirements.txt" }}
 
       - run:
@@ -61,9 +61,7 @@ jobs:
 
     steps:
       - attach_workspace:
-          at:
-            - ./tekel
-            - ./venv/lib/python3.6/site-packages/tekel*
+          at: ..
 
       - run:
           name: run test
@@ -78,9 +76,7 @@ jobs:
 
     steps:
       - attach_workspace:
-          at:
-            - ./tekel
-            - ./venv/lib/python3.6/site-packages/tekel*
+          at: ..
 
       - run:
           name: push documentation
