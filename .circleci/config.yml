@@ -1,21 +1,19 @@
 version: 2
 
-#machine:
-  #environment:
-    ## The github organization or username of the repository which hosts the
-    ## project and documentation.
-    #USERNAME: "RomainBrault"
-
-    ## The repository where the documentation will be hosted
-    #DOC_REPO: "tekel"
-
-    ## The base URL for the Github page where the documentation will be hosted
-    #DOC_URL: ""
-
-    ## The email is to be used for commits in the Github Page
-    #EMAIL: "mail@romainbrault.com"
-
 defaults: &defaults
+  environment:
+    # The github organization or username of the repository which hosts the
+    # project and documentation.
+    USERNAME: "RomainBrault"
+
+    # The repository where the documentation will be hosted
+    DOC_REPO: "tekel"
+
+    # The base URL for the Github page where the documentation will be hosted
+    DOC_URL: ""
+
+    # The email is to be used for commits in the Github Page
+    EMAIL: "mail@romainbrault.com"
   working_directory: ~/tekel/
   docker:
     - image: circleci/python:stretch
@@ -77,11 +75,11 @@ jobs:
       - attach_workspace:
           at: .
 
-      #- run:
-        #name: push_doc
-        #command: |
-            #set -o pipefail && cd doc && make html 2>&1 | tee ~/log.txt
-            #bash .circleci/push_doc.sh
+      - run:
+        name: push_doc
+        command: |
+          set -o pipefail && cd doc && make html 2>&1 | tee ~/log.txt
+          bash .circleci/push_doc.sh
 
 workflows:
   version: 2
