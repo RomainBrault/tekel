@@ -67,14 +67,14 @@ jobs:
 workflows:
   version: 2
   build_and_test:
-      - build:
-          branches:
-            ignore:
-              - gh-pages
+    - build:
+      branches:
+        ignore:
+          - gh-pages
 
-      - deploy:
-        branches:
-          only:
-            - master
-        requires:
-          - build
+    - deploy:
+      branches:
+        only:
+          - master
+      requires:
+        - build
