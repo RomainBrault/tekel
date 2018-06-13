@@ -58,7 +58,7 @@ jobs:
 
     steps:
       - attach_workspace:
-          paths: ./venv
+          at: ./venv
 
       - run:
          name: run test
@@ -73,7 +73,7 @@ jobs:
 
     steps:
       - attach_workspace:
-          paths: ./venv
+          at: ./venv
 
       #- run:
         #name: push_doc
