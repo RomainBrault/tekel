@@ -22,10 +22,6 @@ jobs:
 
     working_directory: ~/tekel
 
-    branches:
-      ignore:
-        - gh-pages
-
     steps:
       - checkout
 
@@ -58,10 +54,6 @@ jobs:
 
     working_directory: ~/tekel
 
-    branches:
-      ignore:
-        - gh-pages
-
     steps:
       - run:
          name: run test
@@ -77,10 +69,6 @@ jobs:
 
     working_directory: ~/tekel
 
-    branches:
-      only:
-        - master
-
     steps:
       - checkout
 
@@ -94,12 +82,25 @@ workflows:
   version: 2
   build-test-and-deploy:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
 
       - test:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
           requires:
             - build
 
       - deploy:
+          filters:
+            branches:
+              only:
+                - master
+
           requires:
             - test
