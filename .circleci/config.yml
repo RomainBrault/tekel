@@ -81,8 +81,7 @@ jobs:
           command: |
             source venv/bin/activate
             set -o pipefail && cd doc && make html 2>&1 | tee ~/log.txt
-            ls .circleci/
-            bash .circleci/push_doc.sh
+            bash .ci_scripts/push_doc.sh
 
 workflows:
   version: 2
