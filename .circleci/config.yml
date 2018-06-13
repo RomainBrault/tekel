@@ -51,6 +51,7 @@ jobs:
             python setup.py install
 
       - persist_to_workspace:
+          root: ~/tekel/
           paths: ./venv
 
   test:
