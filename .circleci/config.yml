@@ -52,7 +52,7 @@ jobs:
 
       - persist_to_workspace:
           root: ~/tekel/
-          paths: ./venv/lib/python3.6/site-packages/tekel/
+          paths: ./venv/lib/python3.6/site-packages/tekel*
 
   test:
     <<: *defaults
