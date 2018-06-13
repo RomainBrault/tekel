@@ -85,13 +85,13 @@ workflows:
   build-test-and-deploy:
     jobs:
       - build:
-        filter:
+        filters:
           branches:
             ignore:
               - gh-pages
 
       - test:
-        filter:
+        filters:
           branches:
             ignore:
               - gh-pages
@@ -99,7 +99,7 @@ workflows:
           - build
 
       - deploy:
-        filter:
+        filters:
           branches:
             only:
               - master
