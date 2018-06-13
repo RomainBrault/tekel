@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script is meant to be called in the "deploy" step defined in 
+# This script is meant to be called in the "deploy" step defined in
 # circle.yml. See https://circleci.com/docs/ for more details.
 # The behavior of the script is controlled by environment variable defined
 # in the circle.yml in the top level folder of the project.
@@ -10,7 +10,7 @@ cd $HOME
 # Copy the build docs to a temporary folder
 rm -rf tmp
 mkdir tmp
-cp -R $HOME/$DOC_REPO/doc/_build/html/* ./tmp/ 
+cp -R $HOME/$DOC_REPO/doc/build/html/* ./tmp/
 
 # Clone the docs repo if it isnt already there
 if [ ! -d $DOC_REPO ];
@@ -50,4 +50,4 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-echo $MSG 
+echo $MSG
