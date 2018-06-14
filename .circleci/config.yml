@@ -78,7 +78,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - "5e:d4:ec:ed:db:d1:a3:f8:09:34:36:8c:57:fe:7a:cd"
+            - "06:7a:ea:56:41:cf:b7:03:5f:67:7e:46:32:6a:f1:ba"
 
       - run:
           name: push documentation
