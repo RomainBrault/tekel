@@ -22,6 +22,7 @@ git branch gh-pages
 git checkout -f gh-pages
 git reset --hard origin/gh-pages
 git clean -dfx
+git checkout master -- .nojekyll .circleci
 
 for name in $(ls -A $HOME/$DOC_REPO); do
     case $name in
