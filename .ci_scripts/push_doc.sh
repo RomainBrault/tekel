@@ -27,7 +27,7 @@ for name in $(ls -A $HOME/$DOC_REPO); do
     case $name in
         .nojekyll) # So that github does not build this as a Jekyll website.
         ;;
-        circle.yml) # Config so that build gh-pages branch.
+        .circleci) # Config so that build gh-pages branch.
         ;;
         *)
         git rm -rf $name
@@ -43,7 +43,7 @@ git config --global user.email $EMAIL
 git config --global user.name $USERNAME
 git add -f ./$DOC_URL/
 git commit -m "$MSG"
-yes "yes" | git push -f origin gh-pages
+git push -f origin gh-pages
 if [ $? -ne 0 ]; then
     echo "Pushing docs failed"
     echo
