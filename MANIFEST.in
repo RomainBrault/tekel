@@ -28,6 +28,7 @@ recursive-exclude .circleci *.yml
 
 exclude tests
 exclude .ci_scripts
+exclude doc
 recursive-exclude doc *
 recursive-exclude tests *
 recursive-exclude .ci_scripts *.sh
