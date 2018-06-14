@@ -87,6 +87,7 @@ pygments_style = 'sphinx'
 # a list of builtin themes.
 #
 html_theme = 'bootstrap'
+html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -95,9 +96,8 @@ html_theme = 'bootstrap'
 html_theme_options = {
     'navbar_sidebarrel': False,
     'navbar_links': [
-        ("Examples", "auto_examples/index"),
         ("API", "api"),
-        ("GitHub", "https://github.com/mathurinm/celer", True)
+        ("GitHub", "https://github.com/RomainBrault/tekel", True)
     ],
     'bootswatch_theme': "united"
 }
