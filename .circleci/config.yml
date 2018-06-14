@@ -74,7 +74,7 @@ jobs:
 
       - run:
           name: test code with coverage
-          command:
+          command: |
             python setup.py install
             flake8 --count tekel setup.py
             pytest --cov=tekel tests
