@@ -1,0 +1,5 @@
+-r minimal.txt
+-r examples.txt
+
+sphinx
+sphinx_bootstrap_theme
