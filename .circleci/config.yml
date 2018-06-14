@@ -58,7 +58,7 @@ jobs:
 
       - restore_cache:
           keys:
-          - dependencies-{{ checksum "requirements.txt" }}
+          - dependencies-{{ checksum "requirements/full.txt" }}
 
       - run:
           name: run test
@@ -77,7 +77,7 @@ jobs:
 
       - restore_cache:
           keys:
-          - dependencies-{{ checksum "requirements.txt" }}
+          - dependencies-{{ checksum "requirements/full.txt" }}
 
       - add_ssh_keys:
           fingerprints:
