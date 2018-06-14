@@ -1,3 +1,5 @@
+import sphinx_bootstrap_theme
+
 # -*- coding: utf-8 -*-
 #
 # Configuration file for the Sphinx documentation builder.
