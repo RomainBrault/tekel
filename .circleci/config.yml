@@ -58,6 +58,7 @@ jobs:
 
       - restore_cache:
           keys:
+            - dependencies-{{ checksum "requirements.txt" }}
             - dependencies-{{ checksum "requirements/tests.txt" }}
 
       - run:
@@ -91,6 +92,7 @@ jobs:
 
       - restore_cache:
           keys:
+            - dependencies-{{ checksum "requirements.txt" }}
             - dependencies-{{ checksum "requirements/doc.txt" }}
 
       - run:
