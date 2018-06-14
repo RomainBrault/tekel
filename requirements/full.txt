@@ -1,3 +1,0 @@
--r doc.txt
--r tests.txt
--r examples.txt
