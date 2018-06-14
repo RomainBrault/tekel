@@ -43,7 +43,7 @@ git config --global user.email $EMAIL
 git config --global user.name $USERNAME
 git add -f ./$DOC_URL/
 git commit -m "$MSG"
-git push -f origin gh-pages
+yes "yes" | git push -f origin gh-pages
 if [ $? -ne 0 ]; then
     echo "Pushing docs failed"
     echo

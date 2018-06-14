@@ -10,7 +10,7 @@ defaults: &defaults
     DOC_REPO: "tekel"
 
     # The base URL for the Github page where the documentation will be hosted
-    DOC_URL: ""
+    DOC_URL: "tekel"
 
     # The email is to be used for commits in the Github Page
     EMAIL: "mail@romainbrault.com"
@@ -84,7 +84,7 @@ jobs:
             cd doc
             make html 2>&1 | tee ~/log.txt
             cd ..
-            yes "yes" | bash .ci_scripts/push_doc.sh
+            bash .ci_scripts/push_doc.sh
 
 workflows:
   version: 2
