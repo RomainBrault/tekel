@@ -75,6 +75,7 @@ jobs:
       - run:
           name: test code with coverage
           command: |
+            source venv/bin/activate
             python setup.py install
             flake8 --count tekel setup.py
             pytest --cov=tekel tests
@@ -109,6 +110,7 @@ jobs:
       - run:
           name: push documentation
           command: |
+            source venv/bin/activate
             python setup.py install
             set -o pipefail
             cd doc
