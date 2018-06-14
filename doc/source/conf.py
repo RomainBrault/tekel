@@ -1,4 +1,9 @@
+import sys
+
+import sphinx_gallery
 import sphinx_bootstrap_theme
+
+from numpydoc import numpydoc, docscrape
 
 # -*- coding: utf-8 -*-
 #
@@ -25,10 +30,10 @@ project = 'tekel'
 copyright = '2018, Romain R. Brault'
 author = 'Romain R. Brault'
 
-# The short X.Y version
-version = ''
+from tekel import __version__ as version  # noqa
+print(version)
 # The full version, including alpha/beta/rc tags
-release = ''
+release = version
 
 
 # -- General configuration ---------------------------------------------------
@@ -51,6 +56,8 @@ extensions = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
+    'sphinx_gallery.gen_gallery',
+    'numpydoc',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -96,6 +103,7 @@ html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 html_theme_options = {
     'navbar_sidebarrel': False,
     'navbar_links': [
+        ("Examples", "auto_examples/index"),
         ("API", "api"),
         ("GitHub", "https://github.com/RomainBrault/tekel", True)
     ],
@@ -181,6 +189,23 @@ texinfo_documents = [
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'https://docs.python.org/': None}
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/{.major}'.format(sys.version_info), None),
+    'numpy': ('https://docs.scipy.org/doc/numpy/', None),
+    # 'scipy': ('https://docs.scipy.org/doc/scipy/reference', None),
+    'matplotlib': ('https://matplotlib.org/', None),
+    'sklearn': ('http://scikit-learn.org/stable', None),
+}
+
+sphinx_gallery_conf = {
+    'backreferences_dir': 'gen_modules/backreferences',
+    'doc_module': ('tekel', 'numpy'),
+    'examples_dirs': '../../examples/',
+    'gallery_dirs': 'auto_examples',
+    'reference_url': {
+        'tekel': None,
+    }
+}
 
 # -- Options for todo extension ----------------------------------------------
 

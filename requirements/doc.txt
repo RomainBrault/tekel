@@ -3,3 +3,6 @@
 
 sphinx
 sphinx_bootstrap_theme
+sphinx_gallery
+numpydoc
+docscrape
