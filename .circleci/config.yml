@@ -72,7 +72,8 @@ jobs:
           key: dependencies-{{ checksum "requirements/tests.txt" }}
 
       - run:
-          name:
+          name: test code with coverage
+          command:
             python setup.py install
             flake8 --count tekel setup.py
             pytest --cov=tekel tests
@@ -98,6 +99,11 @@ jobs:
             source venv/bin/activate
             pip install -r requirements/doc.txt
 
+      - save_cache:
+          paths:
+            - venv
+          key: dependencies-{{ checksum "requirements/doc.txt" }}
+
       - run:
           name: push documentation
           command: |
@@ -107,11 +113,6 @@ jobs:
             make html 2>&1 | tee ~/log.txt
             cd ..
             bash .ci_scripts/push_doc.sh
-
-      - save_cache:
-          paths:
-            - venv
-          key: dependencies-{{ checksum "requirements/doc.txt" }}
 
 workflows:
   version: 2
