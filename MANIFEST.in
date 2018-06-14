@@ -6,6 +6,8 @@ include LICENSE
 include requirements.txt
 include tekel/__init__.py
 
+recursive-include requirements/*.txt
+
 recursive-include examples *.py
 recursive-include examples *.txt
 
