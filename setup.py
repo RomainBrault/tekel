@@ -18,7 +18,7 @@ def main():
           version=__version__,
           description='A TensorFlow kernel library',
           long_description=open('README.rst').read(),
-          license='MIT',
+          license=open('LICENSE').read(),
           authors=__authors__,
           packages=find_packages(),
           install_requires=INSTALL_REQUIRES,
