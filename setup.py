@@ -3,7 +3,6 @@ from __future__ import print_function
 
 import sys
 
-from re import search
 from setuptools import setup, find_packages
 from tekel import __authors__, __version__
 
