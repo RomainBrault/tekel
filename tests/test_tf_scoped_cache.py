@@ -1,13 +1,19 @@
+"""Test tf_scoped_cache.py module."""
+
 import tensorflow as tf
 import numpy as np
 
 from tekel.tf_scoped_cache import scope, clear_all_cached_functions
 
 
-tf.enable_eager_execution()
+try:
+    tf.enable_eager_execution()
+except ValueError:
+    pass
 
 
 def test_tf_scoped_cache():
+    """Test scoped cache hit."""
 
     tf.executing_eagerly()
 
@@ -27,6 +33,7 @@ def test_tf_scoped_cache():
 
 
 def test_tf_scoped_cache_diff_type():
+    """Test scoped cache miss."""
 
     tf.executing_eagerly()
 
@@ -46,6 +53,7 @@ def test_tf_scoped_cache_diff_type():
 
 
 def test_tf_scoped_cache_kwards():
+    """Test scoped cache hit with kwargs."""
 
     tf.executing_eagerly()
 

@@ -1,9 +1,11 @@
-from collections import namedtuple
-from functools import update_wrapper
-from threading import RLock
+"""Scoped TensorFlow function cache."""
 
 import tensorflow as tf
 import numpy as np
+
+from collections import namedtuple
+from functools import update_wrapper
+from threading import RLock
 
 __all__ = ['scope', 'clear_all_cached_functions']
 
