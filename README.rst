@@ -10,10 +10,12 @@
 .. |Python36| image:: https://img.shields.io/badge/Python-3.x-blue.svg
 .. _Python36: https://www.python.org/downloads/release/python-364/
 
+.. |Documentation| image:: https://img.shields.io/badge/api-reference-blue.svg
+.. _Documentation: https://romainbrault.github.io/tekel/doc/api.html#
 
 tekel
 =====
 
-|Codecov|_ |CircleCI|_ |Python36|_
+|Codecov|_ |CircleCI|_ |Python36|_ |Documentation|_
 
 A TensorFlow Kernel Library

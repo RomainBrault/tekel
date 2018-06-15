@@ -1,17 +1,35 @@
 version: 2
+
+defaults: &defaults
+  environment:
+    # The github organization or username of the repository which hosts the
+    # project and documentation.
+    USERNAME: "RomainBrault"
+
+    # The repository where the documentation will be hosted
+    DOC_REPO: "tekel"
+
+    # The base URL for the Github page where the documentation will be hosted
+    DOC_URL: "doc"
+
+    # The email is to be used for commits in the Github Page
+    EMAIL: "mail@romainbrault.com"
+
+  working_directory: ~/tekel/
+
+  docker:
+    - image: circleci/python:stretch
+
 jobs:
   build:
-    docker:
-      - image: circleci/python:stretch
-
-    working_directory: ~/tekel
+    <<: *defaults
 
     steps:
       - checkout
 
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "requirements.txt" }}
+            - dependencies-{{ checksum "requirements.txt" }}
 
       - run:
           name: install python dependencies
@@ -23,14 +41,106 @@ jobs:
 
       - save_cache:
           paths:
-            - ./venv
-          key: v1-dependencies-{{ checksum "requirements.txt" }}
+            - venv
+          key: dependencies-{{ checksum "requirements.txt" }}
 
       - run:
-          name: run tests
+          name: install library
+          command: |
+            source venv/bin/activate
+            python setup.py install
+
+  test:
+    <<: *defaults
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - dependencies-{{ checksum "requirements.txt" }}
+            - dependencies-{{ checksum "requirements/tests.txt" }}
+
+      - run:
+          name: install dependencies
+          command: |
+            source venv/bin/activate
+            pip install -r requirements/tests.txt
+
+      - save_cache:
+          paths:
+            - venv
+          key: dependencies-{{ checksum "requirements/tests.txt" }}
+
+      - run:
+          name: test code with coverage
           command: |
             source venv/bin/activate
             python setup.py install
             flake8 --count tekel setup.py
             pytest --cov=tekel tests
             codecov --token=9859003a-55ac-410d-8207-49daf8349673
+
+  deploy:
+    <<: *defaults
+
+    steps:
+      - checkout
+
+      - add_ssh_keys:
+          fingerprints:
+            - "06:7a:ea:56:41:cf:b7:03:5f:67:7e:46:32:6a:f1:ba"
+
+      - restore_cache:
+          keys:
+            - dependencies-{{ checksum "requirements.txt" }}
+            - dependencies-{{ checksum "requirements/doc.txt" }}
+
+      - run:
+          name: install dependencies
+          command: |
+            source venv/bin/activate
+            pip install -r requirements/doc.txt
+
+      - save_cache:
+          paths:
+            - venv
+          key: dependencies-{{ checksum "requirements/doc.txt" }}
+
+      - run:
+          name: push documentation
+          command: |
+            source venv/bin/activate
+            python setup.py install
+            set -o pipefail
+            cd doc
+            make html 2>&1 | tee ~/log.txt
+            cd ..
+            bash .ci_scripts/push_doc.sh
+
+workflows:
+  version: 2
+  build-test-and-deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+
+      - test:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+          requires:
+            - build
+
+      - deploy:
+          filters:
+            branches:
+              only:
+                - master
+
+          requires:
+            - test

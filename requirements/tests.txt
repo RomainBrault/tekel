@@ -1,0 +1,6 @@
+-r minimal.txt
+
+pytest
+pytest-cov
+flake8
+codecov

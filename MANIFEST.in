@@ -6,6 +6,8 @@ include LICENSE
 include requirements.txt
 include tekel/__init__.py
 
+recursive-include requirements *.txt
+
 recursive-include examples *.py
 recursive-include examples *.txt
 
@@ -17,6 +19,7 @@ recursive-include tekel *.pxd
 
 exclude Makefile
 exclude .coveragerc
+exclude .nojekyll
 exclude *.yml
 exclude .mailmap
 exclude .circleci
@@ -24,5 +27,8 @@ recursive-exclude tekel *.pyc
 recursive-exclude .circleci *.yml
 
 exclude tests
+exclude .ci_scripts
+exclude doc
 recursive-exclude doc *
 recursive-exclude tests *
+recursive-exclude .ci_scripts *.sh
