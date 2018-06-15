@@ -1,6 +1,7 @@
 """Test tf_summaries.py modules."""
 
-import os, pytest
+import os
+import pytest
 
 import tensorflow as tf
 

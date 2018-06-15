@@ -7,7 +7,11 @@ from .environment import get_precision
 __all__ = ['variable_summaries']
 
 
-def variable_summaries(var, name=None):
+def variable_summaries(var, name=None,
+                       mean=True,
+                       stddev=True,
+                       bounds=True,
+                       histogram=True):
     """Attach a lot of summaries to a Tensor.
 
     Parameters
@@ -29,12 +33,19 @@ def variable_summaries(var, name=None):
     elif precision == 'fp64':
         var = tf.cast(var, tf.float64)
     with tf.name_scope(name):
-        mean = tf.reduce_mean(var)
-        tf.summary.scalar('mean', mean)
-        with tf.name_scope('stddev'):
-            stddev = tf.sqrt(tf.reduce_mean(tf.square(var - mean)))
-        tf.summary.scalar('stddev', stddev)
-        tf.summary.scalar('max', tf.reduce_max(var))
-        tf.summary.scalar('min', tf.reduce_min(var))
-        tf.summary.histogram('histogram', var)
+        if mean:
+            with tf.name_scope('mean'):
+                mean = tf.reduce_mean(var)
+                tf.summary.scalar('mean', mean)
+        if stddev:
+            with tf.name_scope('stddev'):
+                stddev = tf.sqrt(tf.reduce_mean(tf.square(var - mean)))
+                tf.summary.scalar('stddev', stddev)
+        if bounds:
+            with tf.name_scope('bounds'):
+                tf.summary.scalar('max', tf.reduce_max(var))
+                tf.summary.scalar('min', tf.reduce_min(var))
+        if histogram:
+            with tf.name_scope('histogram'):
+                tf.summary.histogram('histogram', var)
     return var
