@@ -16,6 +16,10 @@ tf.app.flags.DEFINE_string('precision',
                            'Define which precision to use for computations. '
                            'should be in {}'.format(__SUPPORTED_PRECISIONS__))
 
+tf.app.flags.DEFINE_string('cov',
+                           '',
+                           'Dummy flag for compatibility with pytest-cov')
+
 
 def get_precision():
     """Get the environment precision.

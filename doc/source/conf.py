@@ -1,9 +1,9 @@
 import sys
 
-import sphinx_gallery
+# import sphinx_gallery
 import sphinx_bootstrap_theme
 
-from numpydoc import numpydoc, docscrape
+# from numpydoc import numpydoc, docscrape
 
 # -*- coding: utf-8 -*-
 #
@@ -190,7 +190,8 @@ texinfo_documents = [
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'https://docs.python.org/': None}
 intersphinx_mapping = {
-    'python': ('https://docs.python.org/{.major}'.format(sys.version_info), None),
+    'python': ('https://docs.python.org/{.major}'.format(sys.version_info),
+               None),
     'numpy': ('https://docs.scipy.org/doc/numpy/', None),
     # 'scipy': ('https://docs.scipy.org/doc/scipy/reference', None),
     'matplotlib': ('https://matplotlib.org/', None),
